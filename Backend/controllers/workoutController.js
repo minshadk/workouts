@@ -27,25 +27,21 @@ const getWorkout = async (req, res) => {
 
 // create a new workout
 const createWorkout = async (req, res) => {
-  console.log("controler startger")
-
   const { title, load, reps } = req.body;
 
   let emptyFields = [];
 
   if (!title) emptyField.push("title");
   if (!load) emptyField.push("load");
-  if (!reps) emptyField.push("reps");
+  if (!reps) emptyField.push("reps"); 
 
-  console.log("hi")
-  if (emptyFields.length > 0) {
-    console.log("error cooso")
+  if (emptyFields.length > 0) { 
     return res
       .status(400)
       .json({ error: "Please fill in all the fields", emptyFields });
   }
   // add to the database
-  try {
+  try {   
     const workout = await Workout.create({ title, load, reps });
     res.status(200).json(workout);
   } catch (error) {

@@ -11,7 +11,7 @@ const WorkoutForm = () => {
   const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault();    
 
     const workout = { title, load, reps };
 
@@ -25,11 +25,8 @@ const WorkoutForm = () => {
     const json = await response.json();
 
     if (!response.ok) {
-      console.log("erro ocured")
       setError(json.error);
       setEmptyFields(json.emptyFields)
-      console.log(error)
-      console.log(emptyFields)
     }
 
     if (response.ok) {
