@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require("mongoose");
 
 const workoutRoutes = require("./routes/workouts");
+const userRoutes = require("./routes/user");
 
 // middleware
 app.use(express.json());
@@ -20,6 +21,7 @@ app.get("", (req, res) => {
 });
 
 app.use("/api/workouts", workoutRoutes);
+app.use("/api/user", userRoutes);
 
 mongoose
   .connect(process.env.MONG_URL)
