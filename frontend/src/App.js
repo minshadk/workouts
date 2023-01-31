@@ -11,7 +11,6 @@ import Navbar from './components/Navbar'
 
 
 function App() {
-  console.log("app is loading")
   return (
     <div className="App">
       <BrowserRouter>
