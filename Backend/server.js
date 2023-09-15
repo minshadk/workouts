@@ -16,15 +16,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("", (req, res) => {
-  res.json({ mssg: "Welcome to the app" });
-});
 
 app.use("/api/workouts", workoutRoutes);
 app.use("/api/user", userRoutes);
-
+// console.log(process.env.MONG_URL)
 mongoose
-  .connect(process.env.MONG_URL)
+  // .connect(process.env.MONG_URL)
+  .connect("mongodb+srv://me:ThisIsPassword@cluster0.wcgux.mongodb.net/?retryWrites=true&w=majority")
   .then(() => {
     app.listen(process.env.PORT, () => {
       console.log("connected to db and runing on port", process.env.PORT);
@@ -33,3 +31,4 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
+ 
